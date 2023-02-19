@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:tinder_clone/src/theme_manager/font_manager.dart';
 
 import '../theme_manager/font_style_manager.dart';
 import '../theme_manager/sizes.dart';
@@ -35,7 +36,9 @@ class CustomButton extends StatelessWidget {
         alignment: Alignment.center,
         child: Text(
           text,
-          style: getWhiteTextStyle(),
+          style: getWhiteTextStyle(
+            fontWeight: FontManager.semiBold,
+          ),
         ),
       ),
     );

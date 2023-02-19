@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tinder_clone/src/common_widgets/custom_form_widget.dart';
 import 'package:tinder_clone/src/common_widgets/custom_text_button.dart';
 import 'package:tinder_clone/src/common_widgets/hero_image.dart';
+import 'package:tinder_clone/src/features/auth/presentation/sign_up_age_and_job_screen.dart';
 import 'package:tinder_clone/src/theme_manager/sizes.dart';
 
 import '../../../common_widgets/custom_button.dart';
@@ -59,7 +60,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               CustomButton(
                 text: "Get Started",
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).pushNamed(
+                    SignUpAgeAndJobScreen.routeName,
+                  );
+                },
               ),
               CustomTextButton(onPressed: () {}, text: "Sign in to My Account"),
             ],

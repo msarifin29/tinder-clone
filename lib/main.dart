@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'src/app_screen.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  runApp(
+    const MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
