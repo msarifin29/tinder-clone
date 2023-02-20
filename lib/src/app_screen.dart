@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tinder_clone/src/features/auth/presentation/sign_up_age_and_job_screen.dart';
-import 'package:tinder_clone/src/features/auth/presentation/sign_up_screen.dart';
-import 'package:tinder_clone/src/features/auth/presentation/sign_up_upload_photo_screen.dart';
+import 'package:tinder_clone/src/features/authentication/presentation/sign_up_age_and_job_screen.dart';
+import 'package:tinder_clone/src/features/authentication/presentation/sign_up_screen.dart';
+import 'package:tinder_clone/src/features/authentication/presentation/sign_up_upload_photo_screen.dart';
+import 'package:tinder_clone/src/features/likes_you/presentation/explore_people.dart';
 
 import 'theme_manager/theme_data.dart';
 
@@ -15,13 +16,14 @@ class AppScreen extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: getAplicationTheme(),
-      initialRoute: "/",
+      initialRoute: SignUpScreen.routeName,
       routes: {
-        "/": (context) => const SignUpScreen(),
+        SignUpScreen.routeName: (context) => const SignUpScreen(),
         SignUpAgeAndJobScreen.routeName: (context) =>
             const SignUpAgeAndJobScreen(),
         SignUpUploadPhotoScreen.routeName: (context) =>
-            const SignUpUploadPhotoScreen()
+            const SignUpUploadPhotoScreen(),
+        ExplorePeopleScreen.routeName: (context) => const ExplorePeopleScreen(),
       },
     );
   }

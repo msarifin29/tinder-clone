@@ -33,7 +33,7 @@ class ImageProfile extends StatelessWidget {
           ),
         ),
         const Positioned(
-          bottom: -Sizes.s20,
+          bottom: -Sizes.s16,
           child: SizedBox(
             height: Sizes.s50,
             width: Sizes.s50,
