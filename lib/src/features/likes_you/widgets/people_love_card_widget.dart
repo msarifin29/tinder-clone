@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tinder_clone/src/theme_manager/asset_image_icon_manager.dart';
+import 'package:tinder_clone/src/common_widgets/image_box_widget.dart';
 import 'package:tinder_clone/src/theme_manager/color_manager.dart';
 import 'package:tinder_clone/src/theme_manager/sizes.dart';
 
@@ -21,15 +21,11 @@ class PeopleLoveCardWidget extends StatelessWidget {
         ),
         child: ListTile(
             contentPadding: const EdgeInsets.all(Sizes.s10),
-            leading: Container(
+            leading: const ImageBoxWidget(
               width: Sizes.s70,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                    image: AssetImage(
-                        "${AssetImageIconManager.imagePath}/people_love3_image.png"),
-                    fit: BoxFit.cover),
-              ),
+              imagePath: "people_love3_image.png",
+              shape: BoxShape.circle,
+              fit: BoxFit.cover,
             ),
             title: Text(
               "Sabrina Anho",

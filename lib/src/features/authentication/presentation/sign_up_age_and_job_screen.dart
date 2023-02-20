@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../common_widgets/custom_button.dart';
 import '../../../common_widgets/custom_form_widget.dart';
-import '../../../common_widgets/hero_image.dart';
-import '../../../common_widgets/logo_and_tag_widget.dart';
+import '../widgets/hero_image.dart';
+import '../widgets/logo_and_tag_widget.dart';
 import '../../../theme_manager/sizes.dart';
 import 'sign_up_upload_photo_screen.dart';
 

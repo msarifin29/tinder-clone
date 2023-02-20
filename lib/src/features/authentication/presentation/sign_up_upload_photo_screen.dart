@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tinder_clone/src/common_widgets/custom_button.dart';
 import 'package:tinder_clone/src/common_widgets/custom_text_button.dart';
-import 'package:tinder_clone/src/common_widgets/image_profile.dart';
-import 'package:tinder_clone/src/common_widgets/logo_and_tag_widget.dart';
+import 'package:tinder_clone/src/features/authentication/widgets/upload_image_profile.dart';
+import 'package:tinder_clone/src/features/authentication/widgets/logo_and_tag_widget.dart';
 import 'package:tinder_clone/src/features/likes_you/presentation/explore_people.dart';
 import 'package:tinder_clone/src/theme_manager/font_manager.dart';
 import 'package:tinder_clone/src/theme_manager/font_style_manager.dart';
@@ -11,6 +11,7 @@ import '../../../theme_manager/sizes.dart';
 
 class SignUpUploadPhotoScreen extends StatefulWidget {
   static const String routeName = "/sign-up-upload-photo";
+
   const SignUpUploadPhotoScreen({super.key});
 
   @override
@@ -31,7 +32,7 @@ class _SignUpUploadPhotoScreenState extends State<SignUpUploadPhotoScreen> {
           children: [
             const LogoAndTagWidget(),
             const SizedBox(height: Sizes.s55),
-            const ImageProfile(),
+            const UploadImageProfile(),
             const SizedBox(height: Sizes.s50),
             Text(
               "Andi Mania",
@@ -40,18 +41,9 @@ class _SignUpUploadPhotoScreenState extends State<SignUpUploadPhotoScreen> {
                 fontWeight: FontManager.semiBold,
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "22, ",
-                  style: getBlackTextStyle(),
-                ),
-                Text(
-                  "Lawyer",
-                  style: getBlackTextStyle(),
-                ),
-              ],
+            Text(
+              "22, Lawyer",
+              style: getBlackTextStyle(),
             ),
             const SizedBox(
               height: 240.0,

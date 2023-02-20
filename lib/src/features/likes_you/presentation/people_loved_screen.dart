@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tinder_clone/src/features/likes_you/presentation/profile_detail_screen.dart';
 import 'package:tinder_clone/src/features/likes_you/widgets/people_love_card_widget.dart';
 import 'package:tinder_clone/src/theme_manager/font_manager.dart';
 import 'package:tinder_clone/src/theme_manager/font_style_manager.dart';
@@ -39,9 +40,14 @@ class PeopleLovedScreen extends StatelessWidget {
           ),
           Expanded(
             child: ListView.builder(
-                itemCount: 10,
+                itemCount: 3,
                 itemBuilder: (context, index) {
-                  return const PeopleLoveCardWidget();
+                  return GestureDetector(
+                      onTap: () {
+                        Navigator.of(context)
+                            .pushNamed(ProfileDetailScreen.routeName);
+                      },
+                      child: const PeopleLoveCardWidget());
                 }),
           ),
         ],

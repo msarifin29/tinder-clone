@@ -3,8 +3,8 @@ import 'package:tinder_clone/src/theme_manager/asset_image_icon_manager.dart';
 import 'package:tinder_clone/src/theme_manager/color_manager.dart';
 import 'package:tinder_clone/src/theme_manager/sizes.dart';
 
-class ImageProfile extends StatelessWidget {
-  const ImageProfile({super.key});
+class UploadImageProfile extends StatelessWidget {
+  const UploadImageProfile({super.key});
 
   @override
   Widget build(BuildContext context) {
