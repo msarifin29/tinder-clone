@@ -40,7 +40,7 @@ class GlassCardWidget extends StatelessWidget {
               ),
               Text(
                 "22 , Lawyer",
-                style: getWhiteTextStyle(),
+                style: getWhiteTextStyle(fontSize: Sizes.s14),
               )
             ],
           ),

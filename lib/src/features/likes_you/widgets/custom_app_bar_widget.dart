@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tinder_clone/src/common_widgets/logo_image_widget.dart';
+import 'package:tinder_clone/src/features/likes_you/presentation/people_loved_screen.dart';
 import 'package:tinder_clone/src/theme_manager/asset_image_icon_manager.dart';
 import 'package:tinder_clone/src/theme_manager/sizes.dart';
 
@@ -24,11 +25,15 @@ class CustomAppBar extends StatelessWidget {
           ),
         ),
         const LogoImageWidget(),
-        const Image(
-          width: Sizes.s24,
-          image: AssetImage(
-              "${AssetImageIconManager.imagePath}/icon_notification.png"),
-          fit: BoxFit.cover,
+        GestureDetector(
+          onTap: () =>
+              Navigator.of(context).pushNamed(PeopleLovedScreen.routeName),
+          child: const Image(
+            width: Sizes.s24,
+            image: AssetImage(
+                "${AssetImageIconManager.imagePath}/icon_notification.png"),
+            fit: BoxFit.cover,
+          ),
         ),
       ],
     );
