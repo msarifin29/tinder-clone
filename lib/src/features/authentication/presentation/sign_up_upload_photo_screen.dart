@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:tinder_clone/src/common_widgets/custom_button.dart';
 import 'package:tinder_clone/src/common_widgets/custom_text_button.dart';
@@ -6,6 +8,7 @@ import 'package:tinder_clone/src/features/authentication/widgets/logo_and_tag_wi
 import 'package:tinder_clone/src/features/likes_you/presentation/explore_people.dart';
 import 'package:tinder_clone/src/theme_manager/font_manager.dart';
 import 'package:tinder_clone/src/theme_manager/font_style_manager.dart';
+import 'package:tinder_clone/src/utils/image_picker_util.dart';
 
 import '../../../theme_manager/sizes.dart';
 
@@ -20,6 +23,17 @@ class SignUpUploadPhotoScreen extends StatefulWidget {
 }
 
 class _SignUpUploadPhotoScreenState extends State<SignUpUploadPhotoScreen> {
+  File? image;
+
+  void getImageProfile(ImageFrom source) async {
+    final result = await ImagePickerUtil.getImageFrom(source);
+    if (result != null) {
+      setState(() {
+        image = File(result.path);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +46,45 @@ class _SignUpUploadPhotoScreenState extends State<SignUpUploadPhotoScreen> {
           children: [
             const LogoAndTagWidget(),
             const SizedBox(height: Sizes.s55),
-            const UploadImageProfile(),
+            GestureDetector(
+              onTap: () {
+                showModalBottomSheet(
+                    context: context,
+                    builder: (context) {
+                      return Container(
+                        padding: const EdgeInsets.all(Sizes.s24),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            IconButton(
+                              onPressed: () {
+                                getImageProfile(ImageFrom.camera);
+                                Navigator.of(context).pop();
+                              },
+                              icon: const Icon(
+                                Icons.camera_alt_outlined,
+                                size: Sizes.s50,
+                              ),
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                getImageProfile(ImageFrom.galery);
+                                Navigator.of(context).pop();
+                              },
+                              icon: const Icon(
+                                Icons.photo,
+                                size: Sizes.s50,
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    });
+              },
+              child: UploadImageProfile(
+                image: image,
+              ),
+            ),
             const SizedBox(height: Sizes.s50),
             Text(
               "Andi Mania",
@@ -45,9 +97,7 @@ class _SignUpUploadPhotoScreenState extends State<SignUpUploadPhotoScreen> {
               "22, Lawyer",
               style: getBlackTextStyle(),
             ),
-            const SizedBox(
-              height: 240.0,
-            ),
+            const SizedBox(height: 240.0),
             CustomButton(
               text: "Update My Profile",
               onTap: () {
