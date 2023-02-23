@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tinder_clone/src/features/authentication/domain/user_account.dart';
 
-class DataUserAccountLocalStorage {
+class DataUserAccountLocal {
   static const userAccountKey = "userAccountKey";
 
   static getDataUserAccountFromStorage() async {
@@ -23,10 +23,10 @@ class DataUserAccountLocalStorage {
   }
 }
 
-class UserIsRegister {
+class UserAccountRegister {
   static const userIsRegisterKey = "userIsRegisterKey";
 
-  static Future<bool> getUserIsRegister() async {
+  static Future<bool> getUserAccountRegister() async {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getBool(userIsRegisterKey) ?? false;
   }
@@ -34,5 +34,10 @@ class UserIsRegister {
   static void setUserIsRegister(bool isRegister) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool(userIsRegisterKey, isRegister);
+  }
+
+  static userLogoutRequest() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(userIsRegisterKey);
   }
 }

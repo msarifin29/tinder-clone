@@ -7,7 +7,7 @@ class UserAccount {
   final String password;
   final String occupation;
   final int age;
-  final String? imageProfile;
+  String? imageProfile;
   UserAccount({
     required this.fullName,
     required this.email,
