@@ -1,5 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
+import 'package:tinder_clone/src/features/likes_you/domain/user.dart';
+import 'package:tinder_clone/src/features/likes_you/presentation/explore_people.dart';
 import 'package:tinder_clone/src/features/likes_you/widgets/match_button.dart';
 
 import '../../../common_widgets/image_box_widget.dart';
@@ -9,19 +12,26 @@ import '../../../theme_manager/sizes.dart';
 
 class ImageProfileDetailWidget extends StatelessWidget {
   const ImageProfileDetailWidget({
-    super.key,
-  });
+    Key? key,
+    required this.user,
+  }) : super(key: key);
+
+  final User user;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       alignment: Alignment.topLeft,
       children: [
-        const ImageBoxWidget(
-          width: double.infinity,
+        Container(
           height: 420.0,
-          imagePath: "people_love1_image.png",
-          fit: BoxFit.cover,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(user.imagePath),
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
         Padding(
           padding: const EdgeInsets.only(top: Sizes.s40, right: Sizes.s26),
@@ -41,10 +51,19 @@ class ImageProfileDetailWidget extends StatelessWidget {
                   fontWeight: FontManager.semiBold,
                 ),
               ),
-              const ImageBoxWidget(
-                height: Sizes.s24,
-                width: Sizes.s24,
-                imagePath: "icon_close_circle.png",
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    ExplorePeopleScreen.routeName,
+                    (route) => false,
+                  );
+                },
+                child: const ImageBoxWidget(
+                  height: Sizes.s24,
+                  width: Sizes.s24,
+                  imagePath: "icon_close_circle.png",
+                ),
               ),
             ],
           ),

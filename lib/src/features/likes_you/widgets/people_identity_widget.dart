@@ -1,12 +1,18 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 import '../../../theme_manager/font_manager.dart';
 import '../../../theme_manager/font_style_manager.dart';
 import '../../../theme_manager/sizes.dart';
+import '../domain/user.dart';
 
 class PeopleIdentityWidget extends StatelessWidget {
-  const PeopleIdentityWidget({super.key});
+  const PeopleIdentityWidget({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
 
+  final User user;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -17,19 +23,19 @@ class PeopleIdentityWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Sabrina Anho",
+            user.fullName,
             style: getWhiteTextStyle(
                 fontSize: Sizes.s28, fontWeight: FontManager.semiBold),
           ),
           Text(
-            "22, Lawyer",
+            "${user.age}, ${user.occupation}",
             style: getGrey60TextStyle(),
           ),
           const SizedBox(
             height: Sizes.s10,
           ),
           Text(
-            "I love solving problem in terms of finance, business, and any case. With you, we will solve all world problems.",
+            user.description,
             style: getWhiteTextStyle(),
           ),
         ],

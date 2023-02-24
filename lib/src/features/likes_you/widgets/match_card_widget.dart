@@ -1,12 +1,19 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:tinder_clone/src/theme_manager/asset_image_icon_manager.dart';
+
+import 'package:tinder_clone/src/features/likes_you/domain/user.dart';
 import 'package:tinder_clone/src/theme_manager/color_manager.dart';
 import 'package:tinder_clone/src/theme_manager/sizes.dart';
 
 import 'glass_card_widget.dart';
 
 class MatchCard extends StatelessWidget {
-  const MatchCard({super.key});
+  const MatchCard({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
+
+  final User user;
 
   @override
   Widget build(BuildContext context) {
@@ -21,15 +28,18 @@ class MatchCard extends StatelessWidget {
               color: ColorManager.secondary,
               strokeAlign: BorderSide.strokeAlignInside,
             ),
-            image: const DecorationImage(
+            image: DecorationImage(
               image: AssetImage(
-                  "${AssetImageIconManager.imagePath}/people_love2_image.png"),
+                user.imagePath,
+              ),
               fit: BoxFit.cover,
             ),
             borderRadius: BorderRadius.circular(Sizes.s70),
           ),
         ),
-        const GlassCardWidget(),
+        GlassCardWidget(
+          user: user,
+        ),
       ],
     );
   }
