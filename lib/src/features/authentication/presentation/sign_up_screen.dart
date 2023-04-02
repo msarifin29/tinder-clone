@@ -27,6 +27,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
     fullNameController.clear();
     emailController.clear();
     passwordController.clear();
+    fullNameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
     super.dispose();
   }
 
@@ -82,6 +85,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 onTap: () {
                   final message = validationInput();
                   if (message != null) {
+                    ScaffoldMessenger.of(context).hideCurrentSnackBar();
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text(message),

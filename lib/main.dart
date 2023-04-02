@@ -5,8 +5,10 @@ import 'package:tinder_clone/src/features/likes_you/presentation/bloc/explore_pe
 import 'package:tinder_clone/src/features/likes_you/presentation/bloc/people_loved/people_loved_bloc.dart';
 
 import 'src/app_screen.dart';
+import 'src/utils/my_bloc_observer.dart';
 
 void main() async {
+  Bloc.observer = MyBlocObserver();
   runApp(
     const MyApp(),
   );
