@@ -1,5 +1,7 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:tinder_clone/src/theme_manager/asset_image_icon_manager.dart';
+
+import 'package:tinder_clone/src/features/likes_you/domain/user.dart';
 import 'package:tinder_clone/src/theme_manager/color_manager.dart';
 import 'package:tinder_clone/src/theme_manager/sizes.dart';
 
@@ -7,7 +9,12 @@ import '../../../theme_manager/font_manager.dart';
 import '../../../theme_manager/font_style_manager.dart';
 
 class PeopleLoveCardWidget extends StatelessWidget {
-  const PeopleLoveCardWidget({super.key});
+  const PeopleLoveCardWidget({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
+
+  final User user;
 
   @override
   Widget build(BuildContext context) {
@@ -22,22 +29,23 @@ class PeopleLoveCardWidget extends StatelessWidget {
         child: ListTile(
             contentPadding: const EdgeInsets.all(Sizes.s10),
             leading: Container(
+              height: Sizes.s70,
               width: Sizes.s70,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                    image: AssetImage(
-                        "${AssetImageIconManager.imagePath}/people_love3_image.png"),
-                    fit: BoxFit.cover),
+                  image: AssetImage(user.imagePath),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             title: Text(
-              "Sabrina Anho",
+              user.fullName,
               style: getWhiteTextStyle(
                   fontSize: Sizes.s20, fontWeight: FontManager.semiBold),
             ),
             subtitle: Text(
-              "22 , Lawyer",
+              "${user.age}, ${user.occupation}",
               style: getGrey60TextStyle(),
             )),
       ),

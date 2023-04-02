@@ -31,6 +31,8 @@ class CustomFormWidget extends StatelessWidget {
           height: Sizes.s8,
         ),
         TextField(
+          style: getWhiteTextStyle(),
+          controller: controller,
           decoration: InputDecoration(
             hintText: hintText,
             hintStyle: getBlack30TextStyle(),

@@ -1,14 +1,19 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 import '../../../theme_manager/asset_image_icon_manager.dart';
 import '../../../theme_manager/font_manager.dart';
 import '../../../theme_manager/font_style_manager.dart';
 import '../../../theme_manager/sizes.dart';
+import '../domain/user.dart';
 
 class GlassCardWidget extends StatelessWidget {
   const GlassCardWidget({
-    super.key,
-  });
+    Key? key,
+    required this.user,
+  }) : super(key: key);
+
+  final User user;
 
   @override
   Widget build(BuildContext context) {
@@ -34,12 +39,12 @@ class GlassCardWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Sabrina Anho",
+                user.fullName,
                 style: getWhiteTextStyle(
                     fontSize: Sizes.s20, fontWeight: FontManager.semiBold),
               ),
               Text(
-                "22 , Lawyer",
+                "${user.age}, ${user.occupation} ",
                 style: getWhiteTextStyle(fontSize: Sizes.s14),
               )
             ],
@@ -50,7 +55,8 @@ class GlassCardWidget extends StatelessWidget {
             decoration: const BoxDecoration(
                 image: DecorationImage(
               image: AssetImage(
-                  "${AssetImageIconManager.imagePath}/icon_profile.png"),
+                "${AssetImageIconManager.imagePath}/icon_profile.png",
+              ),
               fit: BoxFit.cover,
             )),
           ),

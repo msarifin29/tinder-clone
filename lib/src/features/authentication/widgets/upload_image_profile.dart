@@ -1,10 +1,19 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first, unnecessary_null_comparison
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+
 import 'package:tinder_clone/src/theme_manager/asset_image_icon_manager.dart';
 import 'package:tinder_clone/src/theme_manager/color_manager.dart';
 import 'package:tinder_clone/src/theme_manager/sizes.dart';
 
-class ImageProfile extends StatelessWidget {
-  const ImageProfile({super.key});
+class UploadImageProfile extends StatelessWidget {
+  const UploadImageProfile({
+    Key? key,
+    required this.image,
+  }) : super(key: key);
+
+  final File? image;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +24,6 @@ class ImageProfile extends StatelessWidget {
         Container(
           height: 200.0,
           width: 200.0,
-          padding: const EdgeInsets.all(Sizes.s10),
           decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(
@@ -25,11 +33,16 @@ class ImageProfile extends StatelessWidget {
               )),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(100.0),
-            child: const Image(
-              image: AssetImage(
-                  "${AssetImageIconManager.imagePath}/profile_icon.png"),
-              fit: BoxFit.cover,
-            ),
+            child: image != null
+                ? Image(
+                    image: FileImage(image!),
+                    fit: BoxFit.cover,
+                  )
+                : const Image(
+                    image: AssetImage(
+                        "${AssetImageIconManager.imagePath}/profile_icon.png"),
+                    fit: BoxFit.cover,
+                  ),
           ),
         ),
         const Positioned(

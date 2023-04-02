@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tinder_clone/src/theme_manager/font_style_manager.dart';
 
-import 'logo_image_widget.dart';
+import '../../../common_widgets/logo_image_widget.dart';
 
 class LogoAndTagWidget extends StatelessWidget {
   const LogoAndTagWidget({
