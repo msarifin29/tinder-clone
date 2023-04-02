@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tinder_clone/src/common_widgets/custom_form_widget.dart';
 import 'package:tinder_clone/src/common_widgets/custom_text_button.dart';
+import 'package:tinder_clone/src/features/authentication/presentation/sign_in_screen.dart';
 import 'package:tinder_clone/src/features/authentication/widgets/hero_image.dart';
 import 'package:tinder_clone/src/features/authentication/presentation/sign_up_age_and_job_screen.dart';
 import 'package:tinder_clone/src/theme_manager/sizes.dart';
@@ -105,7 +106,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   );
                 },
               ),
-              CustomTextButton(onPressed: () {}, text: "Sign in to My Account"),
+              CustomTextButton(
+                  onPressed: () {
+                    Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(
+                            builder: (context) => const SignInScreen()),
+                        (route) => false);
+                  },
+                  text: "Sign in to My Account"),
             ],
           ),
         ),
